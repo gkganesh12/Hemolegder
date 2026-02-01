@@ -1,0 +1,31 @@
+{
+    "name": "bloodbank-network",
+    "version": "1.0.0",
+    "client": {
+        "organization": "BloodBankOrg",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "BloodBankOrg": {
+            "mspid": "BloodBankMSP",
+            "peers": [
+                "peer0.bloodbank.example.com"
+            ],
+            "certificateAuthorities": []
+        }
+    },
+    "peers": {
+        "peer0.bloodbank.example.com": {
+            "url": "grpc://localhost:7051",
+            "tlsCACerts": {
+                "path": "path/to/tlscacerts"
+            }
+        }
+    }
+}

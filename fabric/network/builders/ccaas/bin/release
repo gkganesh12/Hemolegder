@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+BUILD_OUTPUT="$1"
+RELEASE_OUTPUT="$2"
+if [ -f "$BUILD_OUTPUT/connection.json" ]; then
+    mkdir -p "$RELEASE_OUTPUT"
+    cp "$BUILD_OUTPUT/connection.json" "$RELEASE_OUTPUT/connection.json"
+fi
+exit 0

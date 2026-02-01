@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+METADATA_DIR="$2"
+if [ ! -f "$METADATA_DIR/metadata.json" ]; then
+    exit 1
+fi
+# Check for ccaas type using grep instead of jq
+if grep -q '"type"[[:space:]]*:[[:space:]]*"ccaas"' "$METADATA_DIR/metadata.json"; then
+    exit 0
+fi
+exit 1

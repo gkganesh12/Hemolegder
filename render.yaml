@@ -1,0 +1,35 @@
+services:
+  # Next.js Web Service
+  - type: web
+    name: blood-bank-system
+    env: node
+    plan: free # Can be changed to a paid plan for better performance
+    buildCommand: "npm install && npx prisma generate && npm run build"
+    startCommand: "npx prisma migrate deploy && npm run start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: blood-bank-db
+          property: connectionString
+      - key: NEXTAUTH_URL
+        value: https://blood-bank-system.onrender.com # Update this after deployment
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true # Note: User should manually set this to 32 chars if needed
+      - key: FABRIC_MODE
+        value: mock
+      - key: FABRIC_CHANNEL_NAME
+        value: bloodchannel
+      - key: FABRIC_CHAINCODE_NAME
+        value: bloodbank
+
+databases:
+  # PostgreSQL Database
+  - name: blood-bank-db
+    plan: free
+    region: oregon # Update based on preference

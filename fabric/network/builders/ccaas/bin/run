@@ -1,0 +1,10 @@
+#!/bin/bash
+# For ccaas, we don't actually run the chaincode here.
+# The chaincode is running as a separate container (chaincode-bloodbank).
+# This script just needs to wait until the peer signals completion.
+# It reads connection info from release output and the peer connects directly.
+
+# Keep the process running - the peer will terminate it when done
+while true; do
+    sleep 1
+done

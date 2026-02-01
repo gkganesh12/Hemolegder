@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+SOURCE="$1"
+OUTPUT="$3"
+if [ -f "$SOURCE/connection.json" ]; then
+    cp "$SOURCE/connection.json" "$OUTPUT/connection.json"
+    exit 0
+fi
+exit 1

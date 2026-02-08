@@ -5,7 +5,7 @@ services:
     env: node
     plan: free # Can be changed to a paid plan for better performance
     buildCommand: "npm install && npx prisma generate && npm run build"
-    startCommand: "npx prisma migrate deploy && npm run start"
+    startCommand: "npx prisma migrate deploy && npm run db:seed && npm run start"
     envVars:
       - key: NODE_ENV
         value: production

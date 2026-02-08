@@ -160,7 +160,7 @@ export default function Home() {
     },
     {
       title: 'Complete Traceability',
-      description: 'Track blood units from donation to transfusion with a full audit trail.',
+      description: 'Track blood units from donation to transfusion, preventing counterfeits and illegal trafficking with a full audit trail.',
       icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
     },
     {

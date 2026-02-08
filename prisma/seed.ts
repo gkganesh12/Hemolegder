@@ -10,14 +10,14 @@ async function main() {
   const adminPassword = await bcrypt.hash('admin123', 12);
   const admin = await prisma.user.upsert({
     where: { email: 'admin@bloodbank.com' },
-    update: {},
+    update: { passwordHash: adminPassword },
     create: {
       email: 'admin@bloodbank.com',
       passwordHash: adminPassword,
       role: Role.ADMIN,
     },
   });
-  console.log('Created admin user:', admin.email);
+  console.log('✅ Admin user ready:', admin.email);
 
   // Create a blood bank organization
   const bloodBank = await prisma.organization.upsert({
@@ -51,7 +51,7 @@ async function main() {
   const staffPassword = await bcrypt.hash('staff123', 12);
   const bloodBankStaff = await prisma.user.upsert({
     where: { email: 'staff@bloodbank.com' },
-    update: {},
+    update: { passwordHash: staffPassword },
     create: {
       email: 'staff@bloodbank.com',
       passwordHash: staffPassword,
@@ -59,12 +59,12 @@ async function main() {
       organizationId: bloodBank.id,
     },
   });
-  console.log('Created blood bank staff:', bloodBankStaff.email);
+  console.log('✅ Blood bank staff ready:', bloodBankStaff.email);
 
   // Create hospital staff
   const hospitalStaff = await prisma.user.upsert({
     where: { email: 'doctor@hospital.com' },
-    update: {},
+    update: { passwordHash: staffPassword },
     create: {
       email: 'doctor@hospital.com',
       passwordHash: staffPassword,
@@ -72,33 +72,33 @@ async function main() {
       organizationId: hospital.id,
     },
   });
-  console.log('Created hospital staff:', hospitalStaff.email);
+  console.log('✅ Hospital staff ready:', hospitalStaff.email);
 
   // Create regulator
   const regulatorPassword = await bcrypt.hash('regulator123', 12);
   const regulator = await prisma.user.upsert({
     where: { email: 'regulator@health.gov' },
-    update: {},
+    update: { passwordHash: regulatorPassword },
     create: {
       email: 'regulator@health.gov',
       passwordHash: regulatorPassword,
       role: Role.REGULATOR,
     },
   });
-  console.log('Created regulator:', regulator.email);
+  console.log('✅ Regulator ready:', regulator.email);
 
   // Create a donor user
   const donorPassword = await bcrypt.hash('donor123', 12);
   const donorUser = await prisma.user.upsert({
     where: { email: 'donor@example.com' },
-    update: {},
+    update: { passwordHash: donorPassword },
     create: {
       email: 'donor@example.com',
       passwordHash: donorPassword,
       role: Role.DONOR,
     },
   });
-  console.log('Created donor user:', donorUser.email);
+  console.log('✅ Donor user ready:', donorUser.email);
 
   console.log('\n--- Seed Complete ---');
   console.log('\nTest accounts:');

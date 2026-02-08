@@ -75,7 +75,10 @@ Ensure you see the following "Success" indicators:
 
 - **Build Failure (TypeScript/next.config.ts)**: If you see an error like `Failed to transpile "next.config.ts"`, ensure `typescript`, `ts-node`, and `@types/*` are in the `dependencies` section of `package.json`.
 - **Build Failure (Tailwind/PostCSS)**: If you see `Cannot find module '@tailwindcss/postcss'`, ensure `tailwindcss` and `@tailwindcss/postcss` are in the `dependencies` section (not `devDependencies`). *Note: I have already updated these for you.*
-- **Build Failure (Memory)**: If the build fails due to memory, upgrade your Web Service plan from `Free` to `Starter` in `render.yaml`.
+- **Sign-in / Auth Error (500)**: 
+    - Ensure `NEXTAUTH_URL` in the Render Dashboard matches your actual `.onrender.com` URL.
+    - Ensure `AUTH_TRUST_HOST` is set to `true`.
+    - Ensure `AUTH_SECRET` and `NEXTAUTH_SECRET` are both set and identical.
 - **Database Connection Error**: Ensure `FABRIC_MODE` is set to `mock`.
 - **Encryption Key Error**: Ensure `ENCRYPTION_KEY` is precisely 32 characters.
 

@@ -21,6 +21,8 @@ services:
         generateValue: true
       - key: ENCRYPTION_KEY
         generateValue: true # Note: User should manually set this to 32 chars if needed
+      - key: AUTH_TRUST_HOST
+        value: "true"
       - key: FABRIC_MODE
         value: mock
       - key: FABRIC_CHANNEL_NAME

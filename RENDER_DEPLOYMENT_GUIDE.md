@@ -79,6 +79,10 @@ Ensure you see the following "Success" indicators:
     - **Step 1: Check Render Logs**: Go to your Render Dashboard, click your Web Service, and select the **Logs** tab. Look for errors starting with `[next-auth]` or Prisma errors.
     - **Step 2: URL Verification**: Ensure `NEXTAUTH_URL` in the Render Dashboard matches your actual `.onrender.com` URL.
     - **Step 3: Secrets**: Ensure `AUTH_SECRET` is set.
+- **Seeding the Database**: To create the initial admin user and organizations, go to the **Shell** tab in your Render Web Service and run:
+  ```bash
+  npm run db:seed
+  ```
 - **Database Connection Error**: Ensure `FABRIC_MODE` is set to `mock`.
 - **Encryption Key Error**: Ensure `ENCRYPTION_KEY` is precisely 32 characters.
 

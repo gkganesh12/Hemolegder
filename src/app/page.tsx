@@ -204,10 +204,10 @@ export default function Home() {
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              {['Features', 'How It Works', 'Impact'].map((item, i) => (
+              {['Features', 'Platform', 'Resources', 'How It Works', 'Impact'].map((item, i) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  href={['Documentation', 'API Reference', 'Help Center', 'Privacy Policy'].includes(item) ? `/${item.toLowerCase().replace(' ', '-')}` : `#${item.toLowerCase().replace(' ', '-')}`}
                   className="text-gray-600 hover:text-teal-600 font-medium transition-all duration-300 relative group cursor-pointer"
                 >
                   {item}
@@ -339,6 +339,48 @@ export default function Home() {
                 icon={stat.icon}
                 delay={i * 150}
               />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Section */}
+      <section id="platform" className="py-24 bg-gray-50/50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-cyan-50 text-cyan-700 border border-cyan-200 mb-4">Our Ecosystem</span>
+            <h2 className="text-4xl font-bold text-gray-900">One Platform, Many Portals</h2>
+            <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+              HemoLedger provides specialized interfaces for every participant in the blood supply chain.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: 'Donor Portal', desc: 'Securely manage your profile, donations, and data consent.', link: '/donor', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+              { title: 'Blood Banks', desc: 'Track collections, manage inventory, and verify safety tests.', link: '/blood-bank', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z' },
+              { title: 'Hospitals', desc: 'Request blood units and track deliveries in real-time.', link: '/hospital', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+              { title: 'Regulators', desc: 'Monitor the entire ecosystem with full audit transparency.', link: '/regulator', icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' },
+            ].map((portal, i) => (
+              <Link
+                key={i}
+                href={portal.link}
+                className="group p-6 bg-white rounded-2xl border border-gray-100 hover:border-cyan-200 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center mb-4 group-hover:bg-cyan-100 transition-colors">
+                  <svg className="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={portal.icon} />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{portal.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{portal.desc}</p>
+                <span className="text-cyan-600 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Open Portal
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -551,15 +593,15 @@ export default function Home() {
             </div>
 
             {[
-              { title: 'Platform', items: ['Donor Portal', 'Blood Banks', 'Hospitals', 'Regulators'] },
-              { title: 'Resources', items: ['Documentation', 'API Reference', 'Help Center', 'Privacy Policy'] },
+              { title: 'Platform', items: [{name: 'Donor Portal', link: '/donor'}, {name: 'Blood Banks', link: '/blood-bank'}, {name: 'Hospitals', link: '/hospital'}, {name: 'Regulators', link: '/regulator'}] },
+              { title: 'Resources', items: [{name: 'Documentation', link: '/documentation'}, {name: 'API Reference', link: '/api-reference'}, {name: 'Help Center', link: '/help-center'}, {name: 'Privacy Policy', link: '/privacy-policy'}] },
             ].map((section, i) => (
               <div key={i}>
                 <h4 className="font-semibold text-gray-900 mb-4">{section.title}</h4>
                 <ul className="space-y-3">
                   {section.items.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-gray-600 hover:text-teal-600 transition-colors cursor-pointer hover:translate-x-1 inline-block">{item}</a>
+                    <li key={item.name}>
+                      <Link href={item.link} className="text-gray-600 hover:text-teal-600 transition-colors cursor-pointer hover:translate-x-1 inline-block">{item.name}</Link>
                     </li>
                   ))}
                 </ul>

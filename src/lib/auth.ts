@@ -63,17 +63,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
+    async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
         token.id = user.id;
       }
       return token;
     },
-    session({ session, token }) {
+    async session({ session, token }) {
       if (session.user) {
-        session.user.role = token.role;
-        session.user.id = token.id;
+        session.user.role = token.role as Role;
+        session.user.id = token.id as string;
       }
       return session;
     },
@@ -85,5 +85,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: 'jwt',
     maxAge: 24 * 60 * 60,
+  },
+  debug: process.env.NODE_ENV === 'development' || !!process.env.DEBUG,
+  events: {
+    async signIn(message) {
+      console.log('User signed in:', message.user.email);
+    },
+    async createUser(message) {
+      console.log('User created:', message.user.email);
+    },
   },
 });

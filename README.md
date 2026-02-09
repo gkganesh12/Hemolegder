@@ -1,6 +1,6 @@
 # 🩸 Hemoledger Blood Bank Management System: Traceability & Privacy
 
-![Logo](file:///Users/ganesh_khetawat/Blood%20Bank%20Managment%20System/Red_and_Blue_Modern_Blood_Bank_Logo-removebg-preview.png)
+![Logo](./Red_and_Blue_Modern_Blood_Bank_Logo-removebg-preview.png)
 
 A secure, privacy-preserving, and traceable digital platform for managing the blood supply chain. Built with **Next.js**, **Hyperledger Fabric**, and **Prisma**, this system ensures data integrity and transparency while protecting sensitive medical information.
 
@@ -8,7 +8,7 @@ A secure, privacy-preserving, and traceable digital platform for managing the bl
 
 ## 🌟 Overview
 
-Traditional blood bank systems often suffer from lack of transparency, susceptibility to data tampering, and privacy risks. **Hemolegder** addresses these by leveraging a permissioned blockchain network to create an immutable audit trail for every blood unit, from donation to transfusion.
+Traditional blood bank systems often suffer from lack of transparency, susceptibility to data tampering, and privacy risks. **Hemoledger** addresses these by leveraging a permissioned blockchain network to create an immutable audit trail for every blood unit, from donation to transfusion.
 
 ### Key Pillars
 - **Traceability**: Real-time tracking of blood units across stakeholders.

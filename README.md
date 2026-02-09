@@ -1,4 +1,4 @@
-# 🩸 Hemoledger Blood Bank Management System: Traceability & Privacy
+# 🩸 Hemoledger :Blood Bank Management System with Traceability & Privacy
 
 <img src="./Red_and_Blue_Modern_Blood_Bank_Logo-removebg-preview.png" alt="Logo" width="200" />
 

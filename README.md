@@ -118,4 +118,4 @@ For in-depth technical details, requirements, and design specifications, refer t
 
 ---
 
-*Developed with ❤️ by the Blood Bank Management System Team.*
+*Developed with ❤️ by the Ganesh Khetawat.*
